@@ -1123,6 +1123,26 @@ footer {
 
 
 /* =========================
+   Hamburger Menu
+========================= */
+
+#menu {
+    display: none;
+}
+
+
+.menu-icon {
+    display: none;
+
+    font-size: 25px;
+
+    color: var(--text);
+
+    cursor: pointer;
+}
+
+
+/* =========================
    Responsive Design
 ========================= */
 
@@ -1140,16 +1160,62 @@ footer {
 
     /* Navigation */
     nav {
-        flex-direction: column;
+        flex-direction: row;
 
-        gap: 15px;
+        position: relative;
     }
 
 
-    nav ul {
-        flex-wrap: wrap;
+    /* Show Hamburger */
+    .menu-icon {
+        display: block;
+    }
 
-        justify-content: center;
+
+    /* Hide Navigation */
+    nav ul {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+        right: 25px;
+
+        width: 210px;
+
+        flex-direction: column;
+
+        gap: 5px;
+
+        padding: 15px;
+
+        background: var(--glass);
+
+        backdrop-filter: blur(20px);
+
+        border: 1px solid var(--border);
+
+        border-radius: 18px;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* Show Navigation when clicked */
+    #menu:checked ~ ul {
+        display: flex;
+    }
+
+
+    nav ul li {
+        width: 100%;
+    }
+
+
+    nav ul li a {
+        width: 100%;
+
+        padding: 12px 15px;
     }
 
 
@@ -1181,6 +1247,17 @@ footer {
         height: 280px;
     }
 
+
+    /* Mobile Animation */
+    .hero-text {
+        animation: textShow 0.8s ease;
+    }
+
+
+    .hero-image {
+        animation: imageShow 0.8s ease;
+    }
+
 }
 
 
@@ -1208,6 +1285,150 @@ footer {
     .projects,
     .services {
         grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================
+   Simple Animations
+========================= */
+
+
+/* Page appears smoothly */
+body {
+    animation: pageShow 0.8s ease;
+}
+
+
+/* Header comes from top */
+header {
+    animation: headerShow 0.8s ease;
+}
+
+
+/* Hero text comes from left */
+.hero-text {
+    animation: textShow 1s ease;
+}
+
+
+/* Profile image comes from right */
+.hero-image {
+    animation: imageShow 1s ease;
+}
+
+
+/* Profile moves slowly */
+.profile {
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+
+/* Button animation */
+.button,
+.download {
+    transition: transform 0.3s ease;
+}
+
+
+.button:hover,
+.download:hover {
+    transform: translateY(-4px);
+}
+
+
+/* Social icon animation */
+.social a {
+    transition: transform 0.3s ease;
+}
+
+
+.social a:hover {
+    transform: translateY(-5px);
+}
+
+
+/* =========================
+   Animation Keyframes
+========================= */
+
+
+/* Page appears */
+@keyframes pageShow {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* Header comes from top */
+@keyframes headerShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Text comes from left */
+@keyframes textShow {
+
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* Image comes from right */
+@keyframes imageShow {
+
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* Profile moves up and down */
+@keyframes floatImage {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 
 }
